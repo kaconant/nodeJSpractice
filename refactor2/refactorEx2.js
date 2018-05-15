@@ -9,25 +9,29 @@ const requestOptions = {
   url: url,
   encoding: null
 };
-request(requestOptions, (err, response, data) => {
-  if (err) {
-    console.log(err.message);
-    return;
-  }
 
-  fs.writeFile(filename, data, (err) => {
+function downloadAndCreateThumbnail(imageUrl, filename, thumbnailFilename, callback) {
+    request(requestOptions, (err, response, data) => {
     if (err) {
-      console.log(err.message);
-      return;
+        console.log(err.message);
+        return;
     }
-    gm(filename)
-      .resize(240, 240)
-      .write(thumbnailFilename, (err) => {
+    fs.writeFile(filename, data, (err) => {
         if (err) {
-          console.log(err.message);
-          return;
+        console.log(err.message);
+        return;
         }
-        console.log('It worked');
-      });
-  });
-});
+        gm(filename)
+        .resize(240, 240)
+        .write(thumbnailFilename, (err) => {
+            if (err) {
+            console.log(err.message);
+            return;
+            }
+            console.log('It worked');
+            });
+        });
+    });
+};
+
+module.exports = {downloadAndCreateThumbnail};

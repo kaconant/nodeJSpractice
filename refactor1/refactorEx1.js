@@ -16,6 +16,8 @@ function saveWebPage(url, filename, callback) {
         return;
       }
       console.log('It worked');
+
+      callback();
     });
   });
 };
