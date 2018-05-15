@@ -15,7 +15,7 @@ function saveWebPage(url, filename, callback) {
         console.log(err.message);
         return;
       }
-      callback();
+      console.log('It worked');
     });
   });
 };
