@@ -250,4 +250,38 @@ console.log('Listening on port 3000...');
 
 --> use express to keep it clean
 
+// Examples of Functions
+
+setTimeout(function() {
+    console.log('3 seconds have passed');
+}, 3000);
+
+---
+
+var time = 0;
+
+var timer = setInterval(function() {
+    time += 2;
+    console.log( time + ' seconds have passed');
+    if (time > 5) {
+        clearInterval(timer);
+    }
+}, 2000);
+
+// Functional Expressions
+
+function callFunction(fun) {
+    fun();
+}
+
+var sayBye = function() {
+    console.log('bye);
+};
+
+callFunction(sayBye);
+
+// Modules - Different Modules for different code -- create new files for new modules
+
+
+
 
